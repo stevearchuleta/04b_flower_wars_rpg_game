@@ -1,0 +1,96 @@
+body {
+   background: #353535;
+   color: #c4c4c4;
+   font-size: 1.2rem;
+   line-height: 1.45;
+   display: flex;
+   flex-wrap: wrap;
+}
+
+/* Flower Docking Position - Header-like */
+
+#flower-wars {
+   color: green;
+   margin-left: 60px;
+}
+
+.poisonous {
+   float: right; 
+   margin: 0px 0px 35px 35px;
+}
+
+img {
+   border-radius: 50%;
+   height: 125px;
+   width: 125px;
+}
+
+.name {
+   text-align: center;
+}
+
+
+/* CSS Mosaic Placement Divs for War Games */
+
+.container-1 {
+   background: 4f4f4f;
+   min-width: 300px;
+   padding: 1em 1em .1em 1em;
+}
+
+.instructions {
+   margin-left: 60px;
+   background-color: lightgray;
+   padding: 10px;
+}
+
+p {
+   line-height: 8px;
+}
+
+.container {
+   padding: 10%;
+   flex: 1 1 80%;
+   min-height: 100vh;
+}
+
+.grid-container {
+   display: grid;
+   grid-template-rows: repeat(6, 1fr);
+   grid-template-columns: repeat(5, 1fr);
+   grid-gap: 20px;
+   height: 100%;
+}
+
+.portfolio-item {
+   background: #f96855;
+   color: #353535;
+   font-weight: 700;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.medium {
+   grid-row: span 2;
+   grid-column: span 2;
+}
+
+.large {
+   grid-row: span 3;
+   grid-column: span 3;
+}
+
+.tall {
+   grid-row: span 3;
+   grid-column: span 2;
+}
+
+.wide {
+   grid-row: span 2;
+   grid-column: span 2;
+}
+
+button {
+   font-size: 20px; 
+   font-family: sans-serif;
+}
