@@ -36,12 +36,14 @@ img {
    background: 4f4f4f;
    min-width: 300px;
    padding: 1em 1em .1em 1em;
+   
 }
 
 .instructions {
    margin-left: 60px;
    background-color: lightgray;
    padding: 10px;
+   position: relative;
 }
 
 p {
@@ -54,10 +56,31 @@ p {
    min-height: 100vh;
 }
 
+
+
+
+.item-1 { grid-area: poison-1; }
+.item-2 { grid-area: player; }
+.item-3 { grid-area: poison-2; }
+.item-4 { grid-area: attack; }
+.item-5 { grid-area: opponent; }
+.item-6 { grid-area: poison-3; }
+.item-7 { grid-area: spacer; }
+.item-8 { grid-area: virtal-text; }
+
 .grid-container {
    display: grid;
-   grid-template-rows: repeat(6, 1fr);
-   grid-template-columns: repeat(5, 1fr);
+   grid-template-areas:
+      'poison-1 poison-1 spacer player player'
+      'poison-1 poison-1 spacer player player'
+      'poison-2 poison-2 attack player player'
+      'poison-2 poison-2 virtual-text opponent opponent'
+      'poison-3 poison-3 virtual-text opponent opponent'
+      'poison-3 poison-3 virtual-text opponent opponent';
+
+   /* grid-template-rows: repeat(6, 1fr);
+   grid-template-columns: repeat(5, 1fr); */
+   
    grid-gap: 20px;
    height: 100%;
 }
@@ -77,12 +100,12 @@ p {
 
 .large {
    grid-row: span 3;
-   grid-column: span 3;
+   grid-column: 4 / span 2;
 }
 
 .tall {
    grid-row: span 3;
-   grid-column: span 2;
+   grid-column: 4 / span 2;
 }
 
 .wide {
@@ -93,4 +116,21 @@ p {
 button {
    font-size: 20px; 
    font-family: sans-serif;
+}
+.restart {
+   position: absolute;
+   right: 25px;
+}
+
+.virtual-text {
+   grid-column-start: 3;
+   grid-column-end: 4;
+   grid-row-start: 4;
+   grid-row-end: 7;
+}
+.spacer {
+   grid-column-start: 3;
+   grid-column-end: 4;
+   grid-row-start: 1;
+   grid-row-end: 3;
 }

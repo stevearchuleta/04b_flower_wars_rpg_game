@@ -59,9 +59,14 @@
    </div>
 
    <div class="instructions">
+      <div class = "row padLeft">
+            <div class = "padLeft">
+            <button class = "restart" style = "font-size: 20px; font-family: 'Lekton', sans-serif; margin-left: 75px;">Restart</button>
+            </div>
+      </div>
 			<p>Instructions:</p>
-			<p>1. Select a Poisonous Flower (this is your game piece)</p>
-			<p>2.	Select an opposing Poisonous Flower (this is your opponent)</p>
+			<p>1. Click a Poisonous Flower (this is your game piece).</p>
+			<p>2.	Click an opposing Poisonous Flower (this is your opponent).</p>
 			<p>3.	All Poisonous Flowers have "health points" associated with them.</p>
          <p>4. Click the ATTACK button to arbitrarily deplete your opposing Poisonous Flower's health points.</p>
          <p>5. As soon as you click ATTACK, the opposing Poisonous Flower will issue a counter attack.</p>
@@ -69,30 +74,36 @@
          <p>7. If you win, select another Poisonus Flower to defeat.</p>
    </div>
    
-   <div class = "row padLeft">
-			<div class = "padLeft">
-			<button class = "restart" style = "font-size: 20px; font-family: 'Lekton', sans-serif; margin-left: 75px;">Restart</button>
-			</div>
-   </div>
       
    <div class="container">
       <div class="grid-container">
-         <div class="item portfolio-item item--1 medium">one</div>
-         <div class="item portfolio-item item--2 large player" id = "yourFlower">two</div>
-         <div class="item portfolio-item item--3 medium">three</div>
+         <div class="item portfolio-item item--1 medium poison-1">poison one</div>
+         <div class="item portfolio-item item--2 large player" id = "yourFlower">player</div>
+         <div class="item portfolio-item item-8 spacer">spacer</div>
+         <div class="item portfolio-item item--3 medium poison-2">poison two</div>
          <div class="item portfolio-item item--4 attack">
-               <div class = "col-12 attackButton">
-                     <button>ATTACK</button>
+               <div class = "attackButton">
+                     <button id="attack-btn">ATTACK</button>
                </div>
          </div>
-         <div class="item portfolio-item item--5 tall opponent">five</div>
-         <div class="item portfolio-item item--6 wide">six</div>
-         <!-- <div class="item portfolio-item item--7 wide">seven</div>
-         <div class="item portfolio-item item--8 medium">eight</div> -->
-         <!-- <div class="item portfolio-item item--9">nine</div>
-         <div class="item portfolio-item item--10">ten</div>
-         <div class="item portfolio-item item--11">eleven</div>
-         <div class="item portfolio-item item--12">twelve</div> -->
+         <div class="item portfolio-item item--5 tall opponent">opponent</div>
+         <div class="item portfolio-item item--6 wide poison-3">poison three</div>
+         
+         
+         <div class="item portfolio-item item-7 virtual-text">virtual text
+            <p class="youAttacked"></p>
+            <p class="attackedBack"></p>
+            <p class="youDefeated"></p>
+            <p class="youWon"></p>
+            <p class="youLose"></p>
+            <p class="noEnemy"></p>
+         </div>
+         
+         <!--  <div class="item portfolio-item item--9">nine</div>
+               <div class="item portfolio-item item--10">ten</div>
+               <div class="item portfolio-item item--11">eleven</div>
+               <div class="item portfolio-item item--12">twelve</div> -->
+
       </div>
    </div>
 </body>
