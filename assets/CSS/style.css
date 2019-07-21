@@ -1,10 +1,11 @@
 body {
-   background: #353535;
+   background-image: url(../images/wild_flowers.png);
    color: #c4c4c4;
    font-size: 1.2rem;
    line-height: 1.45;
    display: flex;
    flex-wrap: wrap;
+   
 }
 
 /* Flower Docking Position - Header-like */
@@ -12,6 +13,8 @@ body {
 #flower-wars {
    color: green;
    margin-left: 60px;
+   border: 2px solid black;
+   padding: 3px;
 }
 
 .poisonous {
@@ -39,6 +42,8 @@ img {
    
 }
 
+/* INSTRUCTIONS & RESET BUTTON */
+
 .instructions {
    margin-left: 60px;
    background-color: lightgray;
@@ -46,18 +51,28 @@ img {
    position: relative;
 }
 
+button {
+   font-size: 20px; 
+   font-family: sans-serif;
+}
+
+.restart {
+   position: absolute;
+   right: 25px;
+}
+
 p {
    line-height: 8px;
 }
 
+
+/* CSS Grid */
+
 .container {
-   padding: 10%;
+   padding: 30px 15px;
    flex: 1 1 80%;
    min-height: 100vh;
 }
-
-
-
 
 .item-1 { grid-area: poison-1; }
 .item-2 { grid-area: player; }
@@ -78,14 +93,14 @@ p {
       'poison-3 poison-3 virtual-text opponent opponent'
       'poison-3 poison-3 virtual-text opponent opponent';
 
-   /* grid-template-rows: repeat(6, 1fr);
-   grid-template-columns: repeat(5, 1fr); */
+   grid-template-rows: repeat(6, 1fr);
+   grid-template-columns: repeat(5, 1fr);
    
    grid-gap: 20px;
-   height: 100%;
+   height: 550px;
 }
 
-.portfolio-item {
+.battlefield {
    background: #f96855;
    color: #353535;
    font-weight: 700;
@@ -93,33 +108,58 @@ p {
    justify-content: center;
    align-items: center;
 }
-.medium {
+
+
+.poison-0 {
    grid-row: span 2;
    grid-column: span 2;
+   position: relative;
 }
+      #poison-0 { 
+         position: absolute;
+         text-align: center;
+         object-fit: cover;
+         width: 100%;
+         max-height: 100%;
+      }
 
-.large {
+
+.poison-1 {
+   grid-row: span 2;
+   grid-column: span 2;
+   position: relative;
+}
+      #poison-1 {
+         position: absolute;
+         text-align: center;
+         object-fit: cover;
+         width: 100%;
+         max-height: 100%;
+      }
+
+
+.poison-2 {
+   grid-row: span 2;
+   grid-column: span 2;
+   position: relative;
+}
+      #poison-2 {
+         position: absolute;
+         text-align: center;
+         object-fit: cover;
+         width: 100%;
+         max-height: 100%;
+      }
+
+
+.opponent {
    grid-row: span 3;
    grid-column: 4 / span 2;
 }
 
-.tall {
+.player {
    grid-row: span 3;
    grid-column: 4 / span 2;
-}
-
-.wide {
-   grid-row: span 2;
-   grid-column: span 2;
-}
-
-button {
-   font-size: 20px; 
-   font-family: sans-serif;
-}
-.restart {
-   position: absolute;
-   right: 25px;
 }
 
 .virtual-text {
@@ -128,9 +168,11 @@ button {
    grid-row-start: 4;
    grid-row-end: 7;
 }
+ 
 .spacer {
    grid-column-start: 3;
    grid-column-end: 4;
    grid-row-start: 1;
    grid-row-end: 3;
 }
+

@@ -1,8 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Flower Wars RPG</title>
-	<!-- linking the css file. -->
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+   <title>Poisonous Flowers War Game RPG</title>
+   
+   	<!-- linking the css file. -->
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 	<!-- linking the reset css file. -->
@@ -20,139 +25,113 @@
 
 	<!-- linking Google Font. -->
 	<link href="https://fonts.googleapis.com/css?family=Lekton:700" rel="stylesheet">
-
 </head>
+
 <body>
-		<!-- first row that contains the blank space and the "Flower Wars RPG!" title. -->
-		<div class = "row">
-			<div class = "col-6">
-				<!-- this column is blank space before the "Flower Wars RPG!" title.-->
-			</div>
 
-			<div class = "col-6" id = "RPG">
-			<!-- "Flower Wars RPG!" title.-->
-			Flower Wars RPG!
-			</div>
-		</div>
-
-		<!-- second row that contains all four pictures at the start of the game. -->
-      <div class = "row" id = "picRow" style = "margin-left: 22px;">
+   <div class="container-1">
+      <div  class="logo" 
+            id="flower-wars"><h2>Poisonous Flowers War Game</h2>
+            <span id="RPG"><h5>jQuery</h5>Role Play Game</h3></span>
+      </div>
+      
+      <br>
+         
+         <div class = "flowers" id = "picRow" style = "margin-left: 22px;">
             
-            <div class = "col-2 firstRow _0 float" id = "digitalis" value = "foxglove">
+               <!--1: Foxglove-->
+               <div class = "poisonous _0" id = "digitalis" value = "Foxglove">
+                  <p class = "name namef r0" value = "0">Foxglove</p>
+                  <img src="assets/images/foxglove-imagef.jpg"  id = "imagef"><br>
+                  <p class = "HP foxhp foxglove r0"></p>
+               </div>
+
+               <!--2: Larkspur-->
+               <div class = "poisonous _1" id = "delphinium" value = "Larkspur">
+                  <p class = "name namel 1" value = "1">Larkspur</p>
+                  <img src="assets/images/larkspur-imagel.jpg"  id = "imagel"><br>
+                  <p class = "HP larkhp larkspur 1"></p>
+               </div>
                
-               <!--picture 1: Foxglove-->
-               <p class = "name namef r0" value = "0">Foxglove</p>
-               <img src="assets/images/foxglove-imagef.jpg" style="border-radius: 50%" height="75" width="75" id = "imagef"><br>
-               <p class = "HP foxhp foxglove r0"></p>
+               <!--3: Wolf's Bane-->
+               <div class = "poisonous _2" id = "aconitum" value = "WolfsBane">
+                  <p class = "name namew 2" value = "2">Wolf's Bane</p>
+                  <img src="assets/images/wolfsbane-imagew.jpg"  id = "imagew"><br>
+                  <p class = "HP wolfhp wolfsBane 2"></p>
+               </div>
+               
+               <!--4: Oleander-->
+               <div class = "poisonous _3" id = "nerium" value = "Oleander">
+                  <p class = "name nameo 3" value = "3">Oleander</p>
+                  <img src="assets/images/oleander-imageo.jpeg"  id = "imageo"><br>
+                  <p class = "HP oleanhp oleander 3"></p>
+               </div>
+            
+         </div>
+      
+   </div>
 
-            <div class = "col-2 firstRow _1 float" id = "delphinium" value = "larkspur">
-               <!--picture 2: Larkspur-->
-               <p class = "name namel 1" value = "1">Larkspur</p>
-               <img src="assets/images/larkspur-imagel.jpg" style="border-radius: 50%" height="75" width="75" id = "imagel"><br>
-               <p class = "HP larkhp larkspur 1"></p>
+
+   <div class="instructions">
+      <div class = "row padLeft">
+            <div class = "padLeft">
+            <button class = "restart" style = "font-size: 20px; font-family: 'Lekton', sans-serif; margin-left: 75px;">Restart</button>
             </div>
-            
-            <div class = "col-2 firstRow _2 float" id = "aconitum" value = "wolfsBane">
-               <!--picture 3: Wolf's Bane-->
-               <p class = "name namew 2" value = "2">Wolf's Bane</p>
-               <img src="assets/images/wolfsbane-imagew.jpg" style="border-radius: 50%" height="75" width="75" id = "imagew"><br>
-               <p class = "HP wolfhp wolfsBane 2"></p>
-            </div>
-            
-            <div class = "col-2 firstRow _3 float" id = "nerium" value = "oleander" style="float: right">
-               <!--picture 4: Oleander-->
-               <p class = "name nameo 3" value = "3">Oleander</p>
-               <img src="assets/images/oleander-imageo.jpeg" style="border-radius: 50%" height="75" width="75" id = "imageo"><br>
-               <p class = "HP oleanhp oleander 3"></p>
+      </div>
+
+      <p>Instructions:</p>
+      <p>1. Click a Poisonous Flower (this is your game piece).</p>
+      <p>2.	Click an opposing Poisonous Flower (this is your opponent).</p>
+      <p>3.	All Poisonous Flowers have "health points" associated with them.</p>
+      <p>4. Click the ATTACK button to arbitrarily deplete your opposing Poisonous Flower's health points.</p>
+      <p>5. As soon as you click ATTACK, the opposing Poisonous Flower will issue a counter attack.</p>
+      <p>6. Objective: The first Poisonous Flower with zero health points loses.</p>
+      <p>7. If you win, select another Poisonus Flower to defeat.</p>
+
+   </div>
+   
+      
+   <div class="container">
+      <div class="grid-container">
+         <div class="item battlefield poison-0" style="text-align: left"> 0th-index
+            <div id="poison-0"></div>
+         </div>
+
+         <div class="item battlefield item--2 player" id = "yourFlower">Your Flower</div>
+
+         <div class="item battlefield item-8 spacer">spacer</div>
+
+         <div class="item battlefield poison-1"> 1st-index
+            <div id="poison-1"></div>
+         </div>
+
+         <div class="item battlefield item--4 attack">
+            <div class = "attackButton">
+                  <button id="attack-btn">ATTACK</button>
             </div>
          </div>
+
+         <div class="item battlefield item--5 opponent" id="defender">Your Opponent</div>
+
+         <div class="item battlefield poison-2">2nd-index
+               <div id="poison-2"></div>
+         </div>
          
-		</div>
+         <div class="item battlefield item-7 virtual-text">virtual text
+            <p class="youAttacked"></p>
+            <p class="attackedBack"></p>
+            <p class="youDefeated"></p>
+            <p class="youWon"></p>
+            <p class="youLose"></p>
+            <p class="noEnemy"></p>
+         </div>
+         
+         <!--  <div class="item battlefield item--9">nine</div>
+               <div class="item battlefield item--10">ten</div>
+               <div class="item battlefield item--11">eleven</div>
+               <div class="item battlefield item--12">twelve</div> -->
 
-		<div class="instruction">
-			<p>Instructions:</p>
-			<p>1. Select a Poisonous Flower (this is your game piece)</p>
-			<p>2.	Select an opposing Poisonous Flower (this is your opponent)</p>
-			<p>3.	Each Poisonous Flower has "health points" associated with it.<br>&nbsp;&nbsp;&nbsp;Click the ATTACK button to arbitrarily deplete the opposing Poisonous Flower's health points.</p>
-			<p>(as soon as you click ATTACK, the opposing Poisonous Flower will issue a counter attack).</p>
-
-		</div>
-
-		<!-- third row that contains the "Your Flower" text.-->
-		<div class = "row padLeft">
-			<div class = "col-12">
-			Your Flower
-			</div>
-		</div>
-
-		<!-- fourth row that contains the flower that the player chooses.-->
-		<div class = "row padLeft">
-			<div class = "col-12" id = "yourFlower"></div>
-		</div>
-
-		<!-- fifth row that contains the "Enemies available to attack" text.-->
-		<div class = "row padLeft">
-			<div class = "col-12">
-			<p>Enemies Flowers Available to Attack</p>
-			</div>
-		</div>
-
-		<!-- sixth row that contains the flowers the enemies are available to attack.-->
-		<div class = "row padLeft empty">
-			<div class = "col-12 move"  id = "enemies1"></div>
-			<div class = "col-12 move"  id = "enemies0"></div>
-			<div class = "col-12 move"  id = "enemies2"></div>
-			<div class = "col-12 move"  id = "enemies3"></div>
-		</div>
-
-		<!-- seventh row that contains the "Flower Fight Section"-->
-		<div class = "row padLeft">
-			<div class = "col-12">
-			<p>Flower Fight Section</p>
-			</div>
-		</div>
-
-		<!-- eight row for the "Attack" button.-->
-		<div class = "row padLeft">
-			<div class = "col-12 attackButton">
-			<button style = "font-size: 20px; font-family: 'Lekton', sans-serif;">Attack</button>
-			</div>
-		</div>
-
-		<!-- ninth row that contains the "Defender Flower"-->
-		<div class = "row padLeft">
-			<div class = "col-12">
-			<p>Defender Flower</p>
-			</div>
-		</div>
-		
-		<!-- tenth row that contains the character the player has chosen to attack.-->
-		<div class = "row padLeft" style = "padding:0px">
-			<div class = "col-12" id = "defender"></div>
-		</div>
-
-		<!-- eleventh row that contains the text that shows up when a play attacks.-->
-		<div class = "row padLeft">
-			<div class = "col-12">
-			<br>
-			<p class = "youAttacked"></p>
-			<p class = "attackedBack"></p>
-			<p class = "youDefeated"></p>
-			<p class = "youWon"></p>
-			<p class = "youLose"></p>
-			<p class = "noEnemy"></p>
-			</div>
-		</div>
-
-		<!-- twelve row that contains the "restart" button. -->
-		<div class = "row padLeft">
-			<div class = "col-12 padLeft">
-			<button class = "restart" style = "font-size: 20px; font-family: 'Lekton', sans-serif;">Restart</button>
-			</div>
-		</div>
-
+      </div>
+   </div>
 </body>
 </html>
-
-
-      
