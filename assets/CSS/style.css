@@ -11,7 +11,7 @@ body {
 /* Flower Docking Position - Header-like */
 
 #flower-wars {
-   color: green;
+   color: darkolivegreen;
    margin-left: 60px;
    border: 2px solid black;
    padding: 3px;
@@ -101,7 +101,7 @@ p {
 }
 
 .battlefield {
-   background: #f96855;
+   background: darkolivegreen;
    color: #353535;
    font-weight: 700;
    display: flex;

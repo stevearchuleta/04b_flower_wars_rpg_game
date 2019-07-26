@@ -1,6 +1,6 @@
 // global variables
-      var attack;
-      var defend;
+var attack;
+var defend;
 
       var attackflower;
       var defendflower;
@@ -10,9 +10,10 @@ var attackerAP;
 var attackerCAP;
 var attackerFN;
 
-var defenderHP;
-var defenderAP;
-var defenderCAP;
+      var defenderHP;
+      var defenderAP;
+      var defenderCAP;
+      var defenderFN;
 
 var name;
 
@@ -103,7 +104,7 @@ var flowers = {
 
 	Foxglove:{ 
 			name: "Foxglove",
-			visual: 'assets/images/DarthMaul.png',
+			visual: 'assets/images/foxglove-imagef.jpg',
 			healthPoints: 180 + ' health-points',
 			attackPower: 12,
 			fullName: "Foxglove  |  Digitalis",
@@ -116,21 +117,27 @@ $(document).ready(function() {
 
    // Upon user selection, move flowers to appropriate grid area
    $('.poisonous').on('click', function() {
-
+      
+      var foxglove = $('#digitalis');
+      var larkspur = $('#delphinium');
+      var wolfsbane = $('#aconitum');
+      var oleander = $('#nerium');
       if (myFlower == '') {
          // append chosen flower to #yourFlower player grid area
          console.log('USER SELECTED FLOWER $(this): ', this);
          $(this).appendTo('#yourFlower');
          myFlower = $(this);
          yourFlower = $(myFlower).attr('value');
+         console.log(myFlower);
+         console.log($(myFlower).attr('value'));
       }
-         // determine which flower is the user's flower and assign properties accordingly
-      if (yourFlower == flowers.Oleander.name) {
-            attackerHP = flowers.Oleander.healthPoints;
-            attackerAP = flowers.Oleander.attackPower;
-            attackerCAP = flowers.Oleander.counterAttackPower;
-            attackerFN = flowers.Oleander.fullName;
-            attack = flowers.Oleander;
+      // determine which flower is the user's flower and assign properties accordingly
+      if (yourFlower ==    flowers.Oleander.name) {
+         attackerHP = flowers.Oleander.healthPoints;
+         attackerAP = flowers.Oleander.attackPower;
+         attackerCAP = flowers.Oleander.counterAttackPower;
+         attackerFN = flowers.Oleander.fullName;
+         attack = flowers.Oleander;
       }
       else if (yourFlower == flowers.WolfsBane.name) {
          attackerHP = flowers.WolfsBane.healthPoints;
@@ -145,7 +152,7 @@ $(document).ready(function() {
          attackerCAP = flowers.Larkspur.counterAttackPower;
          attackerFN = flowers.Larkspur.fullName;
          attack = flowers.Larkspur;
-
+         
       }
       else if (yourFlower == flowers.Foxglove.name) {
          attackerHP = flowers.Foxglove.healthPoints;
@@ -154,9 +161,28 @@ $(document).ready(function() {
          attackerFN = flowers.Foxglove.fullName;
          attack = flowers.Foxglove;
       }
+      
+            console.log('#nerium: ', oleander);
+      if (myFlower != oleander) {
+         oleander.removeClass('_3');
+            console.log('#nerium: ', oleander);
+      }
+
+      if (myFlower == foxglove) {
+         oleander.addClass('_0');
+            console.log('#nerium: ', oleander);
+      }
+
+      else if (myFlower == larkspur) {
+         oleander.addClass('_1');
+      }
+
+      else if (myFlower == wolfsbane) {
+         oleander.addClass('_2');
+      }
 
       // clone the three remaining flowers to their appropriate grid areas
-      for (var i = 0; i < 4; i++) {
+      for (var i = 0; i < 3; i++) {
         
             $('._' + [i]).not(myFlower).removeClass('poisonous').addClass('defender').appendTo('#poison-' + [i]);
             console.log('._' + [i]);
@@ -167,14 +193,90 @@ $(document).ready(function() {
 
    });
 
-      // move poisonous enemy flower into the opponent grid area
-      $('.defender').on('click', function() {
-         console.log('BIG TEST');
+   // move poisonous enemy flower into the opponent grid area
+   $('.move').on('click', function() {
+      console.log('BIG TEST');
          $(this).appendTo('#defender');
          myDef = $(this);
          yourDefender = $(myDef).children().attr('value');
-      });
+         $(".youDefeated").empty();
 
 
-   
+           // determine which flower is the defender flower and assign properties accordingly
+      if (yourDefender ==    flowers.Oleander.name) {
+         attackerHP = flowers.Oleander.healthPoints;
+         attackerAP = flowers.Oleander.attackPower;
+         attackerCAP = flowers.Oleander.counterAttackPower;
+         attackerFN = flowers.Oleander.fullName;
+         attack = flowers.Oleander;
+      }
+      else if (yourDefender == flowers.WolfsBane.name) {
+         attackerHP = flowers.WolfsBane.healthPoints;
+         attackerAP = flowers.WolfsBane.attackPower;
+         attackerCAP = flowers.WolfsBane.counterAttackPower;
+         attackerFN = flowers.WolfsBane.fullName;
+         attack = flowers.WolfsBane;
+      }
+      else if (yourDefender == flowers.Larkspur.name) {
+         attackerHP = flowers.Larkspur.healthPoints;
+         attackerAP = flowers.Larkspur.attackPower;
+         attackerCAP = flowers.Larkspur.counterAttackPower;
+         attackerFN = flowers.Larkspur.fullName;
+         attack = flowers.Larkspur;
+         
+      }
+      else if (yourDefender == flowers.Foxglove.name) {
+         attackerHP = flowers.Foxglove.healthPoints;
+         attackerAP = flowers.Foxglove.attackPower;
+         attackerCAP = flowers.Foxglove.counterAttackPower;
+         attackerFN = flowers.Foxglove.fullName;
+         attack = flowers.Foxglove;
+      }
+
+
+   });
+
+   $('.attackButton').on('click', function() {
+      if ($('#defender').children().length == 0) {
+         $(".noEnemy").html("Pick an Opponent.");
+      }
+
+      if (!attackerHP < 1 || !defenderHP < 1 ) {
+         
+         attackerHP = (attackerHP - defenderCAP);
+         
+         // write new healthpoints to yourFlower
+         $("." + yourFlower).html(attackerHP);
+
+         $('.youAttacked').html("You attacked " + defenderFN + "for " + attackerAP + "points.");
+
+         defenderHP = (defenderHP - attackerAP);
+
+         $(".attackedBack").html(defenderFN + " attacked you back for " + defenderCAP + " points.");
+
+         // write new healthpoints to defender
+         $("." + yourDefender).html(defenderHP)
+
+      }
+
+      if (defenderHP <= 0) {
+         // clear text then add text
+         $('.youAttacked').empty();
+         $('.attackedBack').empty();
+
+         $(".youDefeated").html("You've defeated" + defenderFN);
+
+         $('#defender').empty();
+
+
+         // increase myFlower attack power
+         attackerAP = (attackerAP + 10);
+         // new value for attackPower
+         attack.attackPower = attackerAP;
+      }
+
+   });
+
 });
+
+
