@@ -23,8 +23,9 @@ var yourDefender;
 var myFlower = '';
 var mydef = '';
 
-// reset
+
 function reset() {
+
    $('#picRow').show();
    $('.restart').hide();
    $('.attackButton').show();
@@ -78,7 +79,7 @@ var flowers = {
 	Oleander: {
 			name: "Oleander",
 			visual: 'assets/images/oleander-imageo.jpeg',
-			healthPoints: 120 + ' health-points',
+			healthPoints: 120,
 			attackPower: 8,
 			fullName: "Oleander  |  Nerium oleander",
 			counterAttackPower: 24
@@ -87,7 +88,7 @@ var flowers = {
 	WolfsBane:{
 			name: "WolfsBane",
 			visual: 'assets/images/wolfsbane-imagew.jpg',
-			healthPoints: 100 + ' health-points',
+			healthPoints: 100,
 			attackPower: 10,
 			fullName: "Wolf's Bane  |  Aconitum",
 			counterAttackPower: 5
@@ -96,7 +97,7 @@ var flowers = {
 	Larkspur:{ 
 			name: "Larkspur",
 			visual: 'assets/images/larkspur-imagel.jpg',
-			healthPoints: 150 + ' health-points',
+			healthPoints: 150,
 			attackPower: 10,
 			fullName: "Larkspur  |  Delphinium",
 			counterAttackPower: 20
@@ -105,7 +106,7 @@ var flowers = {
 	Foxglove:{ 
 			name: "Foxglove",
 			visual: 'assets/images/foxglove-imagef.jpg',
-			healthPoints: 180 + ' health-points',
+			healthPoints: 180,
 			attackPower: 12,
 			fullName: "Foxglove  |  Digitalis",
 			counterAttackPower: 25
@@ -117,22 +118,23 @@ $(document).ready(function() {
 
    // Upon user selection, move flowers to appropriate grid area
    $('.poisonous').on('click', function() {
-      
-      var foxglove = $('#digitalis');
-      var larkspur = $('#delphinium');
-      var wolfsbane = $('#aconitum');
+      console.log('FIRST: ', $('.poisonous').on('click'));
       var oleander = $('#nerium');
+      var wolfsbane = $('#aconitum');
+      var larkspur = $('#delphinium');
+      var foxglove = $('#digitalis');
+     
       if (myFlower == '') {
-         // append chosen flower to #yourFlower player grid area
+         // append chosen flower to #yourFlower grid area
          console.log('USER SELECTED FLOWER $(this): ', this);
          $(this).appendTo('#yourFlower');
          myFlower = $(this);
          yourFlower = $(myFlower).attr('value');
-         console.log(myFlower);
-         console.log($(myFlower).attr('value'));
+         // console.log(myFlower);
+         // console.log($(myFlower).attr('value'));
       }
       // determine which flower is the user's flower and assign properties accordingly
-      if (yourFlower ==    flowers.Oleander.name) {
+      if (yourFlower == flowers.Oleander.name) {
          attackerHP = flowers.Oleander.healthPoints;
          attackerAP = flowers.Oleander.attackPower;
          attackerCAP = flowers.Oleander.counterAttackPower;
@@ -145,6 +147,17 @@ $(document).ready(function() {
          attackerCAP = flowers.WolfsBane.counterAttackPower;
          attackerFN = flowers.WolfsBane.fullName;
          attack = flowers.WolfsBane;
+
+         oleander.removeClass('_3');
+         oleander.addClass('_2');
+
+         oleander.addClass('move');
+         foxglove.addClass('move');
+         larkspur.addClass('move');
+            // console.log('#nerium: ', oleander);
+            // console.log('#aconium: ', wolfsbane);
+            // console.log('#delphinium: ', larkspur);
+            // console.log('#digitalis: ', foxglove);
       }
       else if (yourFlower == flowers.Larkspur.name) {
          attackerHP = flowers.Larkspur.healthPoints;
@@ -152,58 +165,70 @@ $(document).ready(function() {
          attackerCAP = flowers.Larkspur.counterAttackPower;
          attackerFN = flowers.Larkspur.fullName;
          attack = flowers.Larkspur;
-         
-      }
+
+         oleander.removeClass('_3');
+         oleander.addClass('_1');
+
+         oleander.addClass('move');
+         foxglove.addClass('move');
+         wolfsbane.addClass('move');
+            // console.log('#nerium: ', oleander);
+            // console.log('#aconium: ', wolfsbane);
+            // console.log('#delphinium: ', larkspur);
+            // console.log('#digitalis: ', foxglove);
+         }
       else if (yourFlower == flowers.Foxglove.name) {
          attackerHP = flowers.Foxglove.healthPoints;
          attackerAP = flowers.Foxglove.attackPower;
          attackerCAP = flowers.Foxglove.counterAttackPower;
          attackerFN = flowers.Foxglove.fullName;
          attack = flowers.Foxglove;
+
+         oleander.removeClass('_3');
+         oleander.addClass('_0');
+
+         oleander.addClass('move');
+         larkspur.addClass('move');
+         wolfsbane.addClass('move');
+            // console.log('#nerium: ', oleander);
+            // console.log('#aconium: ', wolfsbane);
+            // console.log('#delphinium: ', larkspur);
+            // console.log('#digitalis: ', foxglove);
       }
       
-            console.log('#nerium: ', oleander);
-      if (myFlower != oleander) {
-         oleander.removeClass('_3');
-            console.log('#nerium: ', oleander);
-      }
-
-      if (myFlower == foxglove) {
-         oleander.addClass('_0');
-            console.log('#nerium: ', oleander);
-      }
-
-      else if (myFlower == larkspur) {
-         oleander.addClass('_1');
-      }
-
-      else if (myFlower == wolfsbane) {
-         oleander.addClass('_2');
-      }
 
       // clone the three remaining flowers to their appropriate grid areas
       for (var i = 0; i < 3; i++) {
         
             $('._' + [i]).not(myFlower).removeClass('poisonous').addClass('defender').appendTo('#poison-' + [i]);
-            console.log('._' + [i]);
-            console.log($('._' + [i]).not(myFlower).removeClass('poisonous').addClass('defender').appendTo('#poison-' + [i]));
+            // console.log('._' + [i]);
+            // console.log($('._' + [i]).not(myFlower).removeClass('poisonous').addClass('defender').appendTo('#poison-' + [i]));
          }
       
       $('#picRow').hide();
 
    });
 
+
+   // BETWEEN ONCLICK EVENTS
+   console.log('FIRST: ', $('.poisonous').on('click'));
+   console.log('SECOND: ', $('.defender').on('click'));
+   // BETWEEN ONCLICK EVENTS
+
+
    // move poisonous enemy flower into the opponent grid area
-   $('.move').on('click', function() {
-      console.log('BIG TEST');
+   $('.defender').on('click', function() {
+      console.log('SECOND: ', $('.defender').on('click'));
+
+      console.log('USER SELECTED DEFENDER $(this): ', this);
          $(this).appendTo('#defender');
          myDef = $(this);
          yourDefender = $(myDef).children().attr('value');
          $(".youDefeated").empty();
 
-
+      
            // determine which flower is the defender flower and assign properties accordingly
-      if (yourDefender ==    flowers.Oleander.name) {
+      if (yourDefender == flowers.Oleander.name) {
          attackerHP = flowers.Oleander.healthPoints;
          attackerAP = flowers.Oleander.attackPower;
          attackerCAP = flowers.Oleander.counterAttackPower;
