@@ -118,7 +118,7 @@ $(document).ready(function() {
 
    // Upon user selection, move flowers to appropriate grid area
    $('.poisonous').on('click', function() {
-      console.log('FIRST: ', $('.poisonous').on('click'));
+      console.log('THIS selection: : ', $(this));
       var oleander = $('#nerium');
       var wolfsbane = $('#aconitum');
       var larkspur = $('#delphinium');
@@ -201,8 +201,8 @@ $(document).ready(function() {
       for (var i = 0; i < 3; i++) {
         
             $('._' + [i]).not(myFlower).removeClass('poisonous').addClass('defender').appendTo('#poison-' + [i]);
-            // console.log('._' + [i]);
-            // console.log($('._' + [i]).not(myFlower).removeClass('poisonous').addClass('defender').appendTo('#poison-' + [i]));
+            console.log('._' + [i]);
+            console.log($('._' + [i]).not(myFlower).removeClass('poisonous').addClass('defender').appendTo('#poison-' + [i]));
          }
       
       $('#picRow').hide();
@@ -210,15 +210,16 @@ $(document).ready(function() {
    });
 
 
-   // BETWEEN ONCLICK EVENTS (global)
-   console.log('FIRST: ', $('.poisonous').on('click'));
-   console.log('SECOND: ', $('.defender').on('click'));
-   // BETWEEN ONCLICK EVENTS (global)
+   // // BETWEEN ONCLICK EVENTS (global)
+   // console.log('FIRST: ', $('.poisonous').on('click'));
+   // console.log('SECOND: ', $('.defender').on('click'));
+   // console.log('THIRD: ', $('.move').on('click'));
+   // // BETWEEN ONCLICK EVENTS (global)
 
 
    // move poisonous enemy flower into the opponent grid area
-   $('.defender').on('click', function() {
-      console.log('SECOND: ', $('.defender').on('click'));
+   $('.move').on('click', function() {
+      console.log('SECOND: ', $('.move').on('click'));
 
       console.log('USER SELECTED DEFENDER $(this): ', this);
          $(this).appendTo('#defender');

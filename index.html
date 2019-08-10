@@ -37,33 +37,50 @@
       
       <br>
          
-         <div class = "flowers" id = "picRow" style = "margin-left: 22px;">
+         <div  class = "flowers" 
+               id = "picRow" 
+               style = "margin-left: 22px;">
             
                <!--1: Foxglove-->
-               <div class = "poisonous _0" id = "digitalis" value = "Foxglove">
-                  <p class = "name namef r0" value = "0">Foxglove</p>
-                  <img src="assets/images/foxglove-imagef.jpg"  id = "imagef"><br>
+               <div  class = "poisonous _0" 
+                     id = "digitalis" 
+                     value = "Foxglove">
+                  <p class = "name namef r0" 
+                     value = "0">Foxglove</p>
+                  <img src="assets/images/foxglove-imagef.jpg"  
+                     id = "imagef"><br>
                   <p class = "HP foxhp foxglove r0"></p>
                </div>
 
                <!--2: Larkspur-->
-               <div class = "poisonous _1" id = "delphinium" value = "Larkspur">
-                  <p class = "name namel 1" value = "1">Larkspur</p>
-                  <img src="assets/images/larkspur-imagel.jpg"  id = "imagel"><br>
+               <div  class = "poisonous _1" 
+                     id = "delphinium" 
+                     value = "Larkspur">
+                  <p class = "name namel 1" 
+                     value = "1">Larkspur</p>
+                  <img src="assets/images/larkspur-imagel.jpg"       
+                        id = "imagel"><br>
                   <p class = "HP larkhp larkspur 1"></p>
                </div>
                
                <!--3: Wolf's Bane-->
-               <div class = "poisonous _2" id = "aconitum" value = "WolfsBane">
-                  <p class = "name namew 2" value = "2">Wolf's Bane</p>
-                  <img src="assets/images/wolfsbane-imagew.jpg"  id = "imagew"><br>
+               <div  class = "poisonous _2" 
+                     id = "aconitum" 
+                     value = "WolfsBane">
+                  <p class = "name namew 2" 
+                     value = "2">Wolf's Bane</p>
+                  <img src="assets/images/wolfsbane-imagew.jpg"      
+                        id = "imagew"><br>
                   <p class = "HP wolfhp wolfsBane 2"></p>
                </div>
                
                <!--4: Oleander-->
-               <div class = "poisonous _3" id = "nerium" value = "Oleander">
-                  <p class = "name nameo 3" value = "3">Oleander</p>
-                  <img src="assets/images/oleander-imageo.jpeg"  id = "imageo"><br>
+               <div  class = "poisonous _3" 
+                     id = "nerium" 
+                     value = "Oleander">
+                  <p class = "name nameo 3" 
+                     value = "3">Oleander</p>
+                  <img src="assets/images/oleander-imageo.jpeg"      id = "imageo"><br>
                   <p class = "HP oleanhp oleander 3"></p>
                </div>
             
@@ -75,7 +92,8 @@
    <div class="instructions">
       <div class = "row padLeft">
             <div class = "padLeft">
-            <button class = "restart" style = "font-size: 20px; font-family: 'Lekton', sans-serif; margin-left: 75px;">Restart</button>
+            <button  class = "restart" 
+                     style = "font-size: 20px; font-family: 'Lekton', sans-serif; margin-left: 75px;">Restart</button>
             </div>
       </div>
 
@@ -94,23 +112,29 @@
    <div class="container">
       <div class="grid-container">
          
-         <!-- index 0 Grid Area for a possible defender flower -->
-         <div class="item battlefield poison-0" style="text-align: left"> 0th-index
-            <div id="poison-0"></div>
+         <!-- INDEX 0 Grid Area for a POSSIBLE DEFENDER FLOWER -->
+         <div  class="item battlefield poison-0" 
+               style="text-align: left"> 0th-index
+            <div  class='move' 
+                  id="poison-0"></div>
          </div>
 
          <!-- yourFlower Grid Area on the Battlefield-->
-         <div class="item battlefield item--2 player" id = "yourFlower">Your Flower</div>
+         <div class="item battlefield item--2 player" 
+               id = "yourFlower">Your Flower</div>
+         
+         <!-- Placeholder Div, A spacer that holds nothing whatsoever -->
+         <div class="item battlefield item-8 spacer">Spacer</div>
 
-         <div class="item battlefield item-8 spacer">spacer</div>
 
-
-          <!-- index 1 Grid Area for a possible defender flower -->
-         <div class="item battlefield poison-1" style="text-align: left"> 1st-index
-            <div id="poison-1"></div>
+          <!-- INDEX 1 Grid Area for a POSSIBLE DEFENDER FLOWER -->
+         <div  class="item battlefield poison-1" 
+               style="text-align: left"> 1st-index
+               <div  class='move' 
+               id="poison-1"></div>
          </div>
 
-
+         <!-- ATTACK BUTTON -->
          <div class="item battlefield item--4 attack">
             <div class = "attackButton">
                   <button id="attack-btn">ATTACK</button>
@@ -118,16 +142,19 @@
          </div>
 
           <!-- defender Grid Area on the Battlefield-->
-         <div class="item battlefield item--5 opponent" id="defender">Your Opponent</div>
+         <div class="item battlefield item--5 opponent" 
+               id="defender">Your Opponent</div>
 
 
-           <!-- index 2 Grid Area for a possible defender flower -->
-         <div class="item battlefield poison-2" style="text-align: left">2nd-index
-            <div id="poison-2"></div>
+         <!-- INDEX 2 Grid Area for a POSSIBLE DEFENDER FLOWER -->
+         <div  class="item battlefield poison-2" 
+               style="text-align: left">2nd-index
+               <div  class='move' 
+               id="poison-2"></div>
          </div>
          
-
-         <div class="item battlefield item-7 virtual-text">virtual text
+         <!-- Text Messages to the User -->
+         <div class="item battlefield item-7 virtual-text">Virtual Text
             <p class="youAttacked"></p>
             <p class="attackedBack"></p>
             <p class="youDefeated"></p>
@@ -136,11 +163,6 @@
             <p class="noEnemy"></p>
          </div>
          
-         <!--  <div class="item battlefield item--9">nine</div>
-               <div class="item battlefield item--10">ten</div>
-               <div class="item battlefield item--11">eleven</div>
-               <div class="item battlefield item--12">twelve</div> -->
-
       </div>
    </div>
 </body>
