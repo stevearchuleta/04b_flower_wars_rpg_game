@@ -21,7 +21,7 @@ var yourFlower;
 var yourDefender;
 
 var myFlower = '';
-var mydef = '';
+var myDefender = '';
 
 
 function reset() {
@@ -30,8 +30,8 @@ function reset() {
    $('.restart').hide();
    $('.attackButton').show();
 
-   myFlower = '';
-   myDef = '';
+   var myFlower = '';
+   var myDefender = '';
 
    // healthPoints reset
    flowers.Oleander.healthPoints = 120;
@@ -210,10 +210,10 @@ $(document).ready(function() {
    });
 
 
-   // BETWEEN ONCLICK EVENTS
+   // BETWEEN ONCLICK EVENTS (global)
    console.log('FIRST: ', $('.poisonous').on('click'));
    console.log('SECOND: ', $('.defender').on('click'));
-   // BETWEEN ONCLICK EVENTS
+   // BETWEEN ONCLICK EVENTS (global)
 
 
    // move poisonous enemy flower into the opponent grid area
@@ -222,8 +222,8 @@ $(document).ready(function() {
 
       console.log('USER SELECTED DEFENDER $(this): ', this);
          $(this).appendTo('#defender');
-         myDef = $(this);
-         yourDefender = $(myDef).children().attr('value');
+         myDefender = $(this);
+         yourDefender = $(myDefender).children().attr('value');
          $(".youDefeated").empty();
 
       
@@ -267,14 +267,16 @@ $(document).ready(function() {
       }
 
       if (!attackerHP < 1 || !defenderHP < 1 ) {
-         
+         // when attackButton is clicked, if both players healthpoints are not 0,
+     		// then the game subtracts the defender's CAP from the attacker's HP.)
          attackerHP = (attackerHP - defenderCAP);
          
          // write new healthpoints to yourFlower
          $("." + yourFlower).html(attackerHP);
 
          $('.youAttacked').html("You attacked " + defenderFN + "for " + attackerAP + "points.");
-
+         // when attackButton is clicked, if both players healthpoints are not 0,
+     		// then the game subtracts the attacker's AP points from the defender's HP.)
          defenderHP = (defenderHP - attackerAP);
 
          $(".attackedBack").html(defenderFN + " attacked you back for " + defenderCAP + " points.");
@@ -284,20 +286,54 @@ $(document).ready(function() {
 
       }
 
+      // if your character defeats the defender.
       if (defenderHP <= 0) {
          // clear text then add text
          $('.youAttacked').empty();
          $('.attackedBack').empty();
 
-         $(".youDefeated").html("You've defeated" + defenderFN);
+         $(".youDefeated").html("You've defeated" + defenderFN + "." + ' You can choose anohter flower to challenge.');
 
          $('#defender').empty();
 
-
+         console.log(attackerAP);
          // increase myFlower attack power
          attackerAP = (attackerAP + 10);
          // new value for attackPower
          attack.attackPower = attackerAP;
+         console.log(attackerAP);
+      }
+
+      // if all enemies have been defeated and the attacker still has healthpoints, then the player wins.
+      if ($('.move').children().length == 0) {
+         // clear appropriate text and add victory text.
+         $('.youAttacked').empty();
+         $('.attackedBack').empty();
+         $('.youDefeated').empty();
+         $('.noEnemy').empty();
+         $('.youWon').html("You are victorious!!!  GAME OVER.");
+
+         $('.restart').on('click', function(){
+            location.reload(true);
+         })
+
+      }
+// if your flower's hp = 0 then you lose.
+      if (attackerHP <= 0 ) {
+         $('.restart').show();
+
+         $('.attackButton').hide();
+         
+         // clear appropriate text and add text expressing 'you lose'.
+         $(".youAttacked").empty();
+         $(".attackedBack").empty();
+         $(".youDefeated").empty();
+         $(".youLose").html("You've been defeated...GAME OVER!!!");
+
+         $('.restart').on('click', function(){
+            location.reload(true);
+         })
+
       }
 
    });
